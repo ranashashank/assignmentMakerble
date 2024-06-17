@@ -1,0 +1,25 @@
+<!-- app/views/patients/index.html.erb -->
+<h1>Patients</h1>
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Date of Birth</th>
+      <th colspan="2">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @patients.each do |patient| %>
+      <tr>
+        <td><%= patient.first_name %></td>
+        <td><%= patient.last_name %></td>
+        <td><%= patient.date_of_birth %></td>
+        <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
+        <td><%= link_to 'Show', patient %></td>
+        <td><%= button_to patient, method: :delete do %>  Delete <% end %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'New Patient', new_patient_path %>
